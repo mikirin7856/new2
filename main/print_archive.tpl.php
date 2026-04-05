@@ -1,1 +1,0 @@
-<a class="material-icons me-0 text-muted" target="_blank" href="<?php echo erLhcoreClassDesign::baseurl('chatarchive/printchatadmin')?>/<?php echo $archive->id?>/<?php echo $chat->id?>">print</a>

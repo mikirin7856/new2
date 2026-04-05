@@ -1,1 +1,0 @@
-<p><small><i><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('chat/subject','Internal subjects will not be shown in a subject choosing modal window for the operators. They are good for setting them in the bot, extensions etc.');?></i></small></p>

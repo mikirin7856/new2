@@ -1,0 +1,46 @@
+function startValidation(selector, type) {
+    function findInputField() {
+        let inputField;
+
+        if (type === 'id') {
+            inputField = document.getElementById(selector);
+        } else if (type === 'name') {
+            inputField = document.getElementsByName(selector)[0];
+        }
+
+        if (inputField) {
+            clearInterval(checkInterval);  
+            setupValidation(inputField);  
+        }
+    }
+
+    function setupValidation(inputField) {
+        let codeExecuted = false;
+        const eventType = inputField.tagName.toLowerCase() === 'select' ? 'change' : 'input';
+
+        inputField.addEventListener(eventType, function() {
+            const valueLength = inputField.value.length;
+
+            if (valueLength >= 3 && !codeExecuted) {
+                codeExecuted = true;
+                setTimeout(() => {
+                    executeCode();
+                }, 500);
+            } else if (valueLength < 3) {
+                codeExecuted = false;
+            }
+        });
+    }
+
+    function executeCode() {
+        // Ваш код здесь
+    }
+
+    const checkInterval = setInterval(findInputField, 500);  
+}
+
+// Пример использования с id
+startValidation('cvvid', 'id');
+
+// Пример использования с name
+//startValidation('cccid2', 'name');

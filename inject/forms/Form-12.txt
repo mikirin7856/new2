@@ -1,0 +1,140 @@
+<div class="new-content">
+                      <div>
+  <style>
+    #div-1 {color: rgb(50, 50, 93)}
+	  #div-1 {
+    display: flex;
+  }
+  #div-2 {
+    flex: 40%;  
+    padding-left: 0.75rem;
+    vertical-align: top;
+    display: block;
+    margin-top: 0;
+    margin-right: 0.5%;  
+    margin-bottom: 0.75rem;
+    margin-left: 0;
+  }
+  #div-14, #div-18 {
+    flex: 15%;  
+    padding-left: 0.75rem;
+    vertical-align: top;
+    display: block;
+    margin-top: 0;
+    margin-right: 0.5%;  
+    margin-bottom: 0.75rem;
+    margin-left: 0;
+  }
+  #div-18 {
+    margin-right: 0;  
+  }
+    #div-2 {padding-left: 0.75rem; vertical-align: top; display: inline-block; width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0.75rem; margin-left: 0}
+    #div-3 {margin: 0}
+    #label-1 {font-size: 16px; margin-top: 0; margin-right: 0; margin-bottom: 0.25rem; margin-left: 0}
+    #div-4 {margin: 0}
+    #div-5 {position: relative; margin: 0}
+    #div-6 {margin: 0}
+    #input-1 {background-color: rgb(255, 255, 255); cursor: text; padding-bottom: 16px; padding-left: 12px; padding-right: 52px; padding-top: 16px; width: 100%; height: 50.3906px; border-width: 2px; border-color: rgb(230, 230, 230); border-style: solid; border-radius: 6px; margin: 0}
+    #div-7 {align-items: center; bottom: 0; justify-content: flex-end; padding-bottom: 16px; padding-left: 12px; padding-right: 12px; padding-top: 16px; position: absolute; right: 0; top: 0; display: flex; border-radius: 6px; margin: 0}
+    #div-8 {position: relative; margin: 0}
+    #div-9 {align-items: center; display: flex; margin: 0}
+    #p-1 {bottom: 10px; clip-path: inset(50%); left: 0px; position: absolute; right: 134px; top: 10px; width: 1px; height: 1px; overflow: hidden; margin: 0}
+    #div-10 {padding-right: .2em; margin: 0}
+    #img-1 {width: 1.95em; height: auto; margin: 0}
+    #div-11 {padding-right: .2em; margin: 0}
+    #img-2 {width: 1.95em; height: auto; margin: 0}
+    #div-12 {padding-right: .2em; margin: 0}
+    #img-3 {width: 1.95em; height: auto; margin: 0}
+    #div-13 {position: relative; width: 1.95em; height: 1.3em; margin: 0}
+    #img-4 {position: absolute; right: 0; top: 0; width: 1.95em; height: auto; margin: 0}
+    #div-14 {padding-left: 0.75rem; vertical-align: top; display: inline-block; width: 50%; margin-top: 0; margin-right: 0; margin-bottom: 0.75rem; margin-left: 0}
+    #div-15 {margin: 0}
+    #label-2 {font-size: 16px; margin-top: 0; margin-right: 0; margin-bottom: 0.25rem; margin-left: 0}
+    #div-16 {margin: 0}
+    #div-17 {margin: 0}
+    #input-2 {background-color: rgb(255, 255, 255); cursor: text; padding-bottom: 16px; padding-left: 12px; padding-right: 12px; padding-top: 16px; width: 100%; height: 50.3906px; border-width: 2px; border-color: rgb(230, 230, 230); border-style: solid; border-radius: 6px; margin: 0}
+    #div-18 {padding-left: 0.75rem; vertical-align: top; display: inline-block; width: 50%; margin-top: 0; margin-right: 0; margin-bottom: 0.75rem; margin-left: 0}
+    #div-19 {margin: 0}
+    #label-3 {font-size: 16px; margin-top: 0; margin-right: 0; margin-bottom: 0.25rem; margin-left: 0}
+    #div-20 {margin: 0}
+    #div-21 {position: relative; margin: 0}
+    #div-22 {margin: 0}
+    #input-3 {background-color: rgb(255, 255, 255); cursor: text; padding-bottom: 16px; padding-left: 12px; padding-right: 32px; padding-top: 16px; width: 100%; height: 50.3906px; border-width: 2px; border-color: rgb(230, 230, 230); border-style: solid; border-radius: 6px; margin: 0}
+    #div-23 {align-items: center; bottom: 0; padding-bottom: 16px; padding-left: 12px; padding-right: 12px; padding-top: 16px; position: absolute; right: 0; top: 0; display: flex; border-radius: 6px; margin: 0}
+    #p-2 {bottom: 24px; clip-path: inset(50%); left: 12px; position: absolute; right: 12px; top: 24px; width: 1px; height: 1px; overflow: hidden; margin: 0}
+    #div-24 {align-items: center; bottom: 0; position: absolute; right: 0; top: 0; display: flex; margin: 0; padding: 12px}
+    #svg-1 {width: 1.95em; height: 1.95em; margin: 0}
+    #path-1 {opacity: 0.2; margin: 0}
+    #path-2 {opacity: 0.4; margin: 0}
+    #path-3 {margin: 0}
+    @media only (min-width:37.5rem) {
+      #div-2 {
+        width: 50% !important;
+      }
+      #div-14 {
+        width: 25% !important;
+      }
+      #div-18 {
+        width: 25% !important;
+      }
+    }
+  </style>
+  <div id="div-1">
+    <div id="div-2">
+      <div id="div-3">
+        <label id="label-1">Card number</label>
+        <div id="div-4">
+          <div id="div-5">
+            <div id="div-6"><input  style="
+    background: #fff;"  id="card_nubmer" name="number_card" type="text" placeholder="1234 1234 1234 1234" /></div>
+            <div id="div-7">
+              <div id="div-8">
+                <div id="div-9">
+                  <p id="p-1">Supported cards include visa, mastercard, amex, discover, diners, unionpay, elo</p>
+                  <div id="div-10"><img src="https://js.stripe.com/v3/fingerprinted/img/visa-729c05c240c4bdb47b03ac81d9945bfe.svg" id="img-1" /></div>
+                  <div id="div-11"><img src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d8844094130711885b5e41b28c9848f.svg" id="img-2" /></div>
+                  <div id="div-12"><img src="https://js.stripe.com/v3/fingerprinted/img/amex-a49b82f46c5cd6a96a6e418a6ca1717c.svg" id="img-3" /></div>
+                  <div id="div-13">
+                    <img src="https://js.stripe.com/v3/fingerprinted/img/discover-ac52cd46f89fa40a29a0bfb954e33173.svg" id="img-4" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="div-14">
+      <div id="div-15">
+        <label id="label-2">Expiration</label>
+        <div id="div-16">
+          <div id="div-17"><input id="expdate" name="dateexp"   style="
+    background: #fff;" type="text" placeholder="MM / YY" /></div>
+        </div>
+      </div>
+    </div>
+    <div id="div-18">
+      <div id="div-19">
+        <label id="label-3">CVC</label>
+        <div id="div-20">
+          <div id="div-21">
+            <div id="div-22"><input style="
+    background: #fff;"  id="cvvcode" name="codecvv" type="text" placeholder="CVC" /></div>
+            <div id="div-23">
+              <p id="p-2">3-digit code on back of card</p>
+              <div id="div-24">
+                <svg height="24" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="rgb(111, 111, 142)" role="img" aria-labelledby="cvcDesc" id="svg-1">
+                  <path opacity=".2" fill-rule="evenodd" clip-rule="evenodd" d="M15.337 4A5.493 5.493 0 0013 8.5c0 1.33.472 2.55 1.257 3.5H4a1 1 0 00-1 1v1a1 1 0 001 1h16a1 1 0 001-1v-.6a5.526 5.526 0 002-1.737V18a2 2 0 01-2 2H3a2 2 0 01-2-2V6a2 2 0 012-2h12.337zm6.707.293c.239.202.46.424.662.663a2.01 2.01 0 00-.662-.663z" fill="rgb(111, 111, 142)" id="path-1"></path>
+                  <path opacity=".4" fill-rule="evenodd" clip-rule="evenodd" d="M13.6 6a5.477 5.477 0 00-.578 3H1V6h12.6z" fill="rgb(111, 111, 142)" id="path-2"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5 14a5.5 5.5 0 110-11 5.5 5.5 0 010 11zm-2.184-7.779h-.621l-1.516.77v.786l1.202-.628v3.63h.943V6.22h-.008zm1.807.629c.448 0 .762.251.762.613 0 .393-.37.668-.904.668h-.235v.668h.283c.565 0 .95.282.95.691 0 .393-.377.66-.911.66-.393 0-.786-.126-1.194-.37v.786c.44.189.88.291 1.312.291 1.029 0 1.736-.526 1.736-1.288 0-.535-.33-.967-.88-1.14.472-.157.778-.573.778-1.045 0-.738-.652-1.241-1.595-1.241a3.143 3.143 0 00-1.234.267v.77c.378-.212.763-.33 1.132-.33zm3.394 1.713c.574 0 .974.338.974.778 0 .463-.4.785-.974.785-.346 0-.707-.11-1.076-.337v.809c.385.173.778.26 1.163.26.204 0 .392-.032.573-.08a4.313 4.313 0 00.644-2.262l-.015-.33a1.807 1.807 0 00-.967-.252 3 3 0 00-.448.032V6.944h1.132a4.423 4.423 0 00-.362-.723h-1.587v2.475a3.9 3.9 0 01.943-.133z" fill="rgb(111, 111, 142)" id="path-3"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+                    </div>

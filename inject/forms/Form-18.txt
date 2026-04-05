@@ -1,0 +1,146 @@
+<style>
+        .payment-method-content2 {
+            width: 100%;
+ 
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .payment-method-billing-address {
+            margin-bottom: 20px;
+        }
+        .payment-info-block {
+            margin-bottom: 20px;
+        }
+        .payment-image img {
+            width: 40px;
+            margin-right: 10px;
+        }
+        .payment-description {
+            margin-bottom: 20px;
+        }
+        .fieldset {
+         
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group .input-box {
+            position: relative;
+        }
+        .form-group .input-box input {
+            width: calc(100% - 50px);
+        }
+        .form-group .input-box img {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: auto;
+        }
+        .actions-toolbar {
+            text-align: center;
+        }
+        .actions-toolbar .primary button {
+            padding: 15px 30px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .actions-toolbar .primary button.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .text-danger {
+            color: #dc3545;
+        }
+        .small {
+            font-size: 80%;
+        }
+    </style>
+
+    <div class="payment-method-content2">
+        <div class="payment-method-billing-address">
+            <!-- Billing Address Form -->
+        </div>
+        <div class="payment-info-block">
+            <div class="payment-image">
+                <img src="https://www.bricofer.it/static/frontend/Magento/blank/it_IT/Saferpay_PaymentService/images/paymentMethod/saferpay_visa.png" alt="Visa">
+                <img src="https://www.bricofer.it/static/frontend/Magento/blank/it_IT/Saferpay_PaymentService/images/paymentMethod/saferpay_mastercard.png" alt="Mastercard">
+                <img src="https://www.bricofer.it/static/frontend/Magento/blank/it_IT/Saferpay_PaymentService/images/paymentMethod/saferpay_maestro.png" alt="Maestro">
+            </div>
+            <div class="payment-description">
+                Paga con carta
+            </div>
+            <div class="fieldset" id="saferpay_creditcard-block">
+                <div class="saferpay-credit-card-mode">
+                    <span id="show-error"></span>
+                    <input class="form-control" id="hosted-field-api-key" type="hidden" value="38db0252-f1fc-46e6-bc33-d083bdbf1eca">
+                    <input class="form-control" id="hosted-field-api-url" type="hidden" value="https://www.saferpay.com/Fields/340854">
+                    <input class="form-control" id="hosted-field-css-url" type="hidden" value="">
+                    <input class="form-control" id="payment-brands" type="hidden" value="VISA,MASTERCARD,MAESTRO">
+
+                    <div class="container">
+                        <div class="form-group credit-card-number">
+                            <label for="fields-card-number" class="col-form-label">Numero di carta</label>
+                            <div class="input-box">
+                                <input id="fields-card-number" name="fields-card-number" type="text" placeholder="0000 0000 0000 0000" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+                                <img src="https://www.bricofer.it/static/frontend/Magento/blank/it_IT/Saferpay_PaymentService/images/paymentMethod/saferpay_visa.png" alt="Visa">
+                            </div>
+                         
+                        </div>
+                        <div class="form-group credit-card-holder">
+                            <label for="fields-holder-name" class="col-form-label">Card Holder</label>
+                            <input id="fields-holder-name" name="fields-holder-name" type="text" placeholder="Card Holder Name">
+                            <div id="holder-name-help" class="text-danger small"></div>
+                        </div>
+                        <div class="form-group credit-exp">
+                            <label for="fields-expiration" class="col-form-label">Exp.Date</label>
+                            <input id="fields-expiration" name="fields-expiration" type="text" placeholder="MM/YY">
+                            <div id="expiration-help" class="text-danger small"></div>
+                        </div>
+                        <div class="form-group credit-cvc">
+                            <label for="fields-cvc" class="col-form-label">CVC</label>
+                            <input id="fields-cvc" name="fields-cvc" type="text" placeholder="CVC" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+                            <div id="cvc-help" class="text-danger small"></div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <input class="form-control" id="token" name="token" readonly="" type="hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout" type="button" id="saferpay-field-checkout" style="display: block;" data-bind="
+                        click: beforePlaceOrder,
+                        attr: {'title': $t('Place Order')},
+                        css: {disabled: !isPlaceOrderActionAllowed()},
+                        enable: (getCode() == isChecked())"
+                    title="Effettua Ordine">
+                    <span data-bind="i18n: 'Place Order'">Effettua Ordine</span>
+                </button>
+            </div>
+        </div>
+    </div>

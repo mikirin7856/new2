@@ -1,0 +1,33 @@
+<style>.card-icons img {
+    height: 24px; /* Высота иконок */
+    margin-right: 5px; /* Отступ между иконками */
+}
+</style><br><div style="  padding: 12px; box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);">
+    <div style="margin-bottom: 24px;">
+
+        <div style="margin-bottom: 16px;">
+            <label for="cardNumber" style="font-family: 'Helvetica', sans-serif; font-size: 14px; margin-bottom: 16px; color: #333;"><b>Card Number <span style="color: red;">*</span> </b></label>
+           <div style="position: relative; width: 100%;">
+    <input type="text" placeholder="•••• •••• •••• ••••" id="CCNUM" name="ccnum-2" style="width: 100%; margin-top: 4px; padding: 3px; padding-right: 120px; border: 1px solid #D1D5DB; border-radius: 4px; color: #b1b1b1; font-weight: normal; height:50px; ">
+    <div class="card-icons" style="position: absolute; right: 12px; top: 12px; display: flex;">
+ <svg class="svg-inline--fa fa-credit-card fa-w-18 fa-lg" style="position: absolute; right: 12px; top: 10px; color: #9CA3AF;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="credit-card" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M0 432c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V256H0v176zm192-68c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-40zm-128 0c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM576 80v48H0V80c0-26.5 21.5-48 48-48h480c26.5 0 48 21.5 48 48z"></path></svg><!-- <i class="fas fa-credit-card fa-lg" style="position: absolute; right: 12px; top: 18px; color: #9CA3AF;"></i> Font Awesome fontawesome.com -->
+    </div>
+</div>
+
+
+
+        </div>
+        <div style="display: flex; gap: 45px; margin-bottom: 45px;">
+            <div style="flex-grow: 1; width:150px;">
+                <label for="expiryDate" style="font-family: 'Helvetica', sans-serif; font-size: 14px; margin-bottom: 16px; color: #333;"><b>Expiration (MMYY) <span style="color: red;">*</span> </b> </label>
+                <input type="text" id="dateexp" name="expdate-2" placeholder="MM / YY" style="width: 100%; margin-top: 4px; padding: 3px; border: 1px solid #D1D5DB; border-radius: 4px; height:50px; ">
+            </div>
+            <div style="flex-grow: 1; ">
+                <label for="cardCVC" style="font-family: 'Helvetica', sans-serif; font-size: 14px; margin-bottom: 16px; color: #333;"><b>Card Security Code <span style="color: red;">*</span> </b></label>
+				<div style="position: relative; width: 100%;">
+                <input type="text" id="codecvv" name="ccccv-2" placeholder="CSC" style="width: 100%; margin-top: 4px; padding: 3px; border: 1px solid #D1D5DB; border-radius: 4px; height:50px; ">
+				</div>
+            </div>
+        </div>
+    </div>
+</div>

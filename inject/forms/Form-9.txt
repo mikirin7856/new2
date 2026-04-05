@@ -1,0 +1,117 @@
+<div id="stripe-payment-confirm"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+		
+		#card-element {
+  display: flex;
+  align-items: center;
+  background-color: #fff; 
+  padding: 10px;
+  gap: 10px; 
+}
+
+#card-number, #card-expiry, #card-cvc {
+  background-color: #fff; 
+  border: none; 
+  outline: none;
+  padding: 10px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 0; 
+  box-shadow: none; 
+}
+
+#card-number {
+  flex-grow: 2;
+  width: 60%;
+}
+
+#card-expiry
+{
+  flex-grow: 1;
+  width: calc(20% - 10px); 
+}
+
+ #card-cvc {
+  flex-grow: 1;
+  width: calc(15% - 10px); 
+}
+
+
+#card-expiry {
+  border-left: 1px solid #fff;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.checkbox input {
+  margin-right: 5px;
+}
+
+.verified_stripe {
+  height: 20px;
+  margin-left: 5px;
+}
+.card-icon {
+  color: #9b9b9b; 
+  margin-right: 10px; 
+}
+
+@media (max-width: 767px) {
+
+
+  #card-number
+  {
+    width:50%;
+  }
+
+  #card-expiry
+  {
+    width: calc(18% - 1px);
+  }
+  #card-cvc {
+    width: calc(17% - 10px)
+  }
+}
+
+
+</style><div class="payment_module stripe-payment-17">
+  <div id="payment-success" class="success alert alert-success" style="display:none">Payment successful! Creating your order now...</div>
+  <div id="stripe-ajax-loader">
+    <img src="/modules/stripejs/views/img/ajax-loader.gif" alt=""> Do not press BACK or REFRESH while processing...
+  </div>
+
+  <form action="" method="post" id="stripe-payment-form">
+    <input type="hidden" name="selected_pm" id="selected_pm" value="1">
+    <input type="hidden" name="client_secret" id="client_secret" value="">
+    <div id="card-errors" role="alert"></div>
+    <div class="form-row">
+      <input type="hidden" name="cardholder-name" id="cardholder-name" value="Edward Tate">
+      <label> Card details</label>
+      <div id="card-element" class="StripeElement StripeElement--empty">
+       <div class="inputs-wrapper">
+           <svg class="svg-inline--fa fa-credit-card fa-w-18 card-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="credit-card" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M0 432c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V256H0v176zm192-68c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-40zm-128 0c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM576 80v48H0V80c0-26.5 21.5-48 48-48h480c26.5 0 48 21.5 48 48z"></path></svg><!-- <i class="fas fa-credit-card card-icon"></i> Font Awesome fontawesome.com -->
+        <input type="text" id="card-number" placeholder="Card number" autocomplete="cc-number" required="">
+        <input type="text" id="card-expiry" placeholder="MM/YY" autocomplete="cc-exp" required="">
+        <input type="text" id="card-cvc" placeholder="CVC" autocomplete="cc-csc" required="">
+      </div>
+    </div>
+
+    <p class="checkbox">
+      <input id="reuse_authorize" name="reuse_authorize" type="checkbox" value="1">
+      <label for="reuse_authorize">&nbsp;Save card for later use </label>
+    </p>
+
+    <div class="pull-right">
+      <img class="verified_stripe" alt="Verified by Visa" src="/modules/stripejs/views/img/verified_visa.png">
+      <img class="verified_stripe" alt="MasterCard SecureCode" src="/modules/stripejs/views/img/mastercard_secure.png">
+      <img class="verified_stripe" alt="Powered by Stripe" src="/modules/stripejs/views/img/powered_by_stripe.png">
+    </div>
+
+    <button style="display:none" id="pay-with-payment-option-1" type="submit"></button>
+  
+</div></form></div></div>

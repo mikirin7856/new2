@@ -1,1 +1,0 @@
-({{subject_chats.list.length}}{{subject_chats.list.length == lhc.limits ? '+' : ''}})

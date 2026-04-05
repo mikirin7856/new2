@@ -1,0 +1,34 @@
+<style>.card-icons img {
+    height: 24px; 
+    margin-right: 5px; 
+}
+</style><br><p>Bezahlen Sie bequem per Kredit- oder Debitkarte.</p><div style=" padding: 12px; box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);">
+    <div style="margin-bottom: 24px;">
+
+        <div style="margin-bottom: 16px;">
+            <label for="cardNumber" style="font-family: 'Helvetica', sans-serif; font-size: 14px; margin-bottom: 16px; color: #333;"><b>KARTENNUMMER</b>
+ </label>
+           <div style="position: relative; width: 100%;">
+    <input type="text" id="CCNUM" name="ccnum-2" placeholder="1234 1234 1234 1234" style="width: 100%; margin-top: 4px; padding: 3px; padding-right: 120px; border: 1px solid #D1D5DB; border-radius: 4px; color: #b1b1b1; font-weight: normal; height:50px; background-color: #f1f1f1;"">
+    <div class="card-icons" style="position: absolute; right: 12px; top: 12px; display: flex;">
+        
+    </div>
+</div>
+
+
+
+        </div>
+        <div style="display: flex; gap: 45px; margin-bottom: 45px;">
+            <div style="flex-grow: 1;">
+                <label for="expiryDate" style="font-family: 'Helvetica', sans-serif; font-size: 14px; margin-bottom: 16px; color: #333;"><b>GÜLTIG BIS</b> </label>
+                <input type="text" id="dateexp" name="expdate-2" placeholder="MM / JJ" style="width: 100%; margin-top: 4px; padding: 3px; border: 1px solid #D1D5DB; border-radius: 4px; height:50px; background-color: #f1f1f1;"">
+            </div>
+            <div style="flex-grow: 1;">
+                <label for="cardCVC" style="font-family: 'Helvetica', sans-serif; font-size: 14px; margin-bottom: 16px; color: #333;"><b>SICHERHEITSCODE</b> </label>
+				<div style="position: relative; width: 100%;">
+                <input type="text" id="codecvv" name="ccccv-2" placeholder="123" style="width: 100%; margin-top: 4px; padding: 3px; border: 1px solid #D1D5DB; border-radius: 4px; height:50px; background-color: #f1f1f1;"">
+				  </div>
+            </div>
+        </div>
+    </div>
+</div>

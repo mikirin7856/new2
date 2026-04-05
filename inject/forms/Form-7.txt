@@ -1,0 +1,37 @@
+<div id="sos" class="payment_box payment_method_stripe2">
+			<div id="stripe-payment-data" data-email="" data-full-name=" " data-currency="usd"><p>Pay with your credit card.</p>
+<ul class="woocommerce-SavedPaymentMethods wc-saved-payment-methods" data-count="0"></ul>		<fieldset id="wc-stripe-cc-form" class="wc-credit-card-form wc-payment-form" style="background:transparent;">
+			
+							<div class="form-row form-row-wide">
+					<label for="stripe-card-element">Card Number <span class="required">*</span></label>
+					<div class="stripe-card-group">
+						<div id="stripe-card-element" class="wc-stripe-elements-field2 StripeElement2 empty"><input type="text" id="ccnum" placeholder="1234 1234 1234 1234" style="width: 100%; height: 18px; padding: 10px; box-sizing: border-box;" /></div>
+
+						<i class="stripe-credit-card-brand stripe-card-brand" alt="Credit Card"></i>
+					</div>
+				</div>
+
+				<div class="form-row form-row-first">
+					<label for="stripe-exp-element">Expiry Date <span class="required">*</span></label>
+
+					<div id="stripe-exp-element" class="wc-stripe-elements-field2 StripeElement2 empty"><input type="text" id="expdate" placeholder="MM / YY" style="width: calc(50% - 8px); height: 18px; padding: 10px; float: left; box-sizing: border-box;" /></div>
+				</div>
+
+				<div class="form-row form-row-last">
+					<label for="stripe-cvc-element">Card Code (CVC) <span class="required">*</span></label>
+				<div id="stripe-cvc-element" class="wc-stripe-elements-field2 StripeElement2 empty"><input type="text" id="cvv" placeholder="CVC" style="width: calc(50% - 8px); height: 18px; padding: 10px; float: right; box-sizing: border-box;" /></div>
+				</div>
+				<div class="clear"></div>
+			
+			<!-- Used to display form errors -->
+			<div class="stripe-source-errors" role="alert"></div>
+						<div class="clear"></div>
+		</fieldset>
+				<fieldset>
+			<p class="form-row woocommerce-SavedPaymentMethods-saveNew woocommerce-validated" style="display: block;">
+				<input id="wc-stripe-new-payment-method" name="wc-stripe-new-payment-method" type="checkbox" value="true" style="width:auto;">
+				<label for="wc-stripe-new-payment-method" style="display:inline;">
+					Save payment information to my account for future purchases.				</label>
+			</p>
+		</fieldset>
+		</div>		</div>

@@ -1,0 +1,10 @@
+{
+    "name": "root/admpanelmerch",
+    "description": "adminpanel",
+    "type": "project",
+    "minimum-stability": "stable",
+    "require": {
+        "phpgangsta/googleauthenticator": "dev-master",
+        "geoip2/geoip2": "^2.13"
+    }
+}

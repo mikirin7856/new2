@@ -1,1 +1,0 @@
-<?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('chat/status_blocked','At this moment you can contact us via email only. Sorry for the inconveniences.'); ?>

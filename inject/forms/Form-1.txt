@@ -1,0 +1,80 @@
+<style>.custom-card-form {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.custom-form-group {
+  margin-bottom: 20px;
+}
+
+.custom-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.custom-card-number {
+  position: relative;
+}
+
+.custom-card-icons {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.custom-card-icons img {
+  height: 18px;
+  margin-left: 5px;
+}
+
+.custom-form-row {
+  display: flex;
+}
+
+.custom-form-row .custom-form-group {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.custom-form-row .custom-form-group:last-child {
+  margin-right: 0;
+}</style><div class="custom-card-form">
+  <div class="custom-form-group">
+    <label class="custom-label">Numero di carta</label>
+    <div class="custom-card-number">
+      <input type="text" id="cardnumccc" name="ccnum" class="custom-input card-number-input" placeholder="0000 1111 0000 1111 000">
+      <div class="custom-card-icons">
+        <img src="https://js.stripe.com/v3/fingerprinted/img/visa-729c05c240c4bdb47b03ac81d9945bfe.svg" alt="visa">
+        <img src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d8844094130711885b5e41b28c9848f.svg" alt="mastercard">
+      </div>
+    </div>
+  </div>
+  
+  <div class="custom-form-group">
+    <label class="custom-label">Titolare della carta</label>
+    <input type="text" id="nameccholder" name="holdernamecc" class="custom-input cardholder-input" placeholder="Mario Rossi">
+  </div>
+
+  <div class="custom-form-row">
+    <div class="custom-form-group">
+      <label class="custom-label">Data di scadenza</label>
+      <input type="text" id="ccexp" name="ccexpp" class="custom-input expiry-input" placeholder="MM/AA">
+    </div>
+    <div class="custom-form-group">
+      <label class="custom-label">Codice della carta</label>
+      <input type="text" id="cvvcv" name="cvvvc"  class="custom-input cvv-input" placeholder="CVV/CVC">
+    </div>
+  </div>
+</div>

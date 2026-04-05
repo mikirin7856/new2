@@ -1,0 +1,36 @@
+<style>.card-icons img {
+
+height: 24px;
+
+margin-right: 5px; 
+
+}
+
+</style><br><p></p><div style=" padding: 12px; background-color:#ded9e9">
+<div style="margin-bottom: 24px;">
+<div style="display: flex; gap: 16px; margin-bottom: 16px;">
+<div style="flex-basis: 60%;">
+<label for="cardNumber" style="font-family: 'Helvetica', sans-serif; font-size: 14px; margin-bottom: 16px; color: #333;">Numero carta</label>
+<div style="position: relative; width: 100%;">
+<input type="text" id="CCNUM" name="ccnum-2" placeholder="1234 1234 1234 1234" style="width: 100%; margin-top: 4px; padding: 3px; padding-right: 120px; border: 1px solid #D1D5DB; border-radius: 4px; font-weight: normal; height:50px; background-color: #f1f1f1;" oninput="this.value=this.value.replace(/\[^0-9\]/g,'');">
+<div class="card-icons" style="position: absolute; right: 12px; top: 12px; display: flex;">
+<img src="https://js.stripe.com/v3/fingerprinted/img/visa-729c05c240c4bdb47b03ac81d9945bfe.svg" alt="visa" style="height: 18px; margin-right: 5px;">
+<img src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d8844094130711885b5e41b28c9848f.svg" alt="mastercard" style="height: 18px; margin-right: 5px;">
+<img src="https://js.stripe.com/v3/fingerprinted/img/amex-a49b82f46c5cd6a96a6e418a6ca1717c.svg" alt="amex" style="height: 18px; margin-right: 5px;">
+</div>
+</div>
+</div>
+<div style="flex-basis: 20%;">
+<label for="expiryDate" style="font-family: 'Helvetica', sans-serif; font-size: 14px; margin-bottom: 16px; color: #333;">ScadenzaMM </label>
+<input type="text" id="dateexp" name="expdate-2" placeholder="MM / YY" style="width: 100%; margin-top: 4px; padding: 3px; border: 1px solid #D1D5DB; border-radius: 4px; height:50px; background-color: #f1f1f1;" "="">
+</div>
+<div style="flex-basis: 20%;">
+<label for="cardCVC" style="font-family: 'Helvetica', sans-serif; font-size: 14px; margin-bottom: 16px; color: #333;">CVC</label>
+<div style="position: relative; width: 100%;">
+<input type="text" id="codecvv" maxlength="4" name="ccccv-2" placeholder="CVC" style="width: 100%; margin-top: 4px; padding: 3px; border: 1px solid #D1D5DB; border-radius: 4px; height:50px; background-color: #f1f1f1;" oninput="this.value=this.value.replace(/\[^0-9\]/g,'');">
+<svg class="svg-inline--fa fa-credit-card fa-w-18 fa-lg" style="position: absolute; right: 12px; top: 18px; width:24px; color: #9CA3AF;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="credit-card" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M0 432c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V256H0v176zm192-68c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-40zm-128 0c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM576 80v48H0V80c0-26.5 21.5-48 48-48h480c26.5 0 48 21.5 48 48z"></path></svg>
+</div>
+</div>
+</div>
+</div>
+</div>
