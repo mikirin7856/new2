@@ -1,1 +1,1 @@
-<?php echo "Prod ok!"; ?>
+<?php // Silence is golden
